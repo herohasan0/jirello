@@ -1,15 +1,12 @@
 import {authMiddleware, redirectToSignIn} from "@clerk/nextjs";
 import {NextResponse} from "next/server";
 
-console.log('everused')
 
 export default authMiddleware({
     publicRoutes: ['/'],
     afterAuth(auth, req) {
-        console.log('everused2')
 
         if (auth.userId && auth.isPublicRoute) {
-            console.log('auth', auth)
             let path = '/select-org'
 
             if (auth.orgId) {
